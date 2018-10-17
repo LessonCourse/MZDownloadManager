@@ -62,7 +62,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     
 }
 
-open class MZDownloadManager: NSObject {
+@objc open class MZDownloadManager: NSObject {
     
     fileprivate var sessionManager: URLSession!
     
@@ -76,7 +76,7 @@ open class MZDownloadManager: NSObject {
     
     open var downloadingArray: [MZDownloadModel] = []
     
-    public convenience init(session sessionIdentifer: String, delegate: MZDownloadManagerDelegate, sessionConfiguration: URLSessionConfiguration? = nil, completion: (() -> Void)? = nil) {
+    @objc public convenience init(session sessionIdentifer: String, delegate: MZDownloadManagerDelegate, sessionConfiguration: URLSessionConfiguration? = nil, completion: (() -> Void)? = nil) {
         self.init()
         self.delegate = delegate
         self.sessionManager = backgroundSession(identifier: sessionIdentifer, configuration: sessionConfiguration)
@@ -84,7 +84,7 @@ open class MZDownloadManager: NSObject {
         self.backgroundSessionCompletionHandler = completion
     }
     
-    public class func defaultSessionConfiguration(identifier: String) -> URLSessionConfiguration {
+    @objc public class func defaultSessionConfiguration(identifier: String) -> URLSessionConfiguration {
         return URLSessionConfiguration.background(withIdentifier: identifier)
     }
     
